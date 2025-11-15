@@ -6,10 +6,12 @@
 │  ├─ web/           # wasm target + static assets
 │  ├─ desktop/       # native desktop binary
 │  ├─ mobile/        # mobile entrypoint (simulator/devices)
-│  └─ ui/            # shared components, styling, assets
+│  └─ ui/
+│     ├─ src/pages/        # page-level widgets (FSD)
+│     └─ src/shared/ui/    # primitive UI components (FSD)
 └─ target/           # cargo build artifacts
 ```
-Each platform crate exposes `src/main.rs`, platform-specific `assets/`, and view modules under `src/views/`. The `ui` crate must stay platform agnostic; only import it from platform crates.
+Each platform crate exposes `src/main.rs`, platform-specific `assets/`, and (when needed) platform-specific modules under `src/`. Shared UI follows a lightweight FSD split (`pages`, `shared/ui`) so that widgets can mature into `features/` or `entities/` later while staying platform agnostic.
 
 ## Development commands
 Run these from the repo root:

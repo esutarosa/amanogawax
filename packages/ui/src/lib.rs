@@ -1,4 +1,7 @@
-//! Shared UI components for the workspace.
+//! Shared UI components arranged roughly along FSD principles.
 
-mod home;
-pub use home::HomePage;
+pub mod pages;
+pub mod shared;
+
+pub use pages::home::HomePage;
+pub use shared::ui::button::Button;
