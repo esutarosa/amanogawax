@@ -1,62 +1,44 @@
-# Development
-
-Your new workspace contains a member crate for each of the web, desktop and mobile platforms, and a `ui` crate for components that are shared between multiple platforms:
-
+## Project layout
 ```
-your_project/
-├─ README.md
-├─ Cargo.toml
-└─ packages/
-   ├─ web/
-   │  └─ ... # Web specific UI/logic
-   ├─ desktop/
-   │  └─ ... # Desktop specific UI/logic
-   ├─ mobile/
-   │  └─ ... # Mobile specific UI/logic
-   └─  ui/
-      └─ ... # Component shared between multiple platforms
+.
+├─ Cargo.toml        # workspace manifest
+├─ packages/
+│  ├─ web/           # wasm target + static assets
+│  ├─ desktop/       # native desktop binary
+│  ├─ mobile/        # mobile entrypoint (simulator/devices)
+│  └─ ui/            # shared components, styling, assets
+└─ target/           # cargo build artifacts
 ```
+Each platform crate exposes `src/main.rs`, platform-specific `assets/`, and view modules under `src/views/`. The `ui` crate must stay platform agnostic; only import it from platform crates.
 
-## Platform crates
+## Development commands
+Run these from the repo root:
 
-Each platform crate contains the entry point for the platform, and any assets, components and dependencies that are specific to that platform. For example, the desktop crate in the workspace looks something like this:
+| Task | Command | Notes |
+| --- | --- | --- |
+| Web dev server | `cd packages/web && dx serve --platform web --package web` | Hot reloads + opens browser. |
+| Desktop dev | `cd packages/desktop && dx serve --platform desktop --package desktop` | Runs native window with live reload. |
+| Mobile dev (sim/device) | `cd packages/mobile && dx serve --platform mobile --package mobile` | Requires matching SDK/emulator. |
+| Workspace check | `cargo fmt --all && cargo clippy --all-targets --all-features` | Keep formatting and lints clean. |
 
-```
-desktop/ # The desktop crate contains all platform specific UI, logic and dependencies for the desktop app
-├─ assets/ # Assets used by the desktop app - Any platform specific assets should go in this folder
-├─ src/
-│  ├─ main.rs # The entrypoint for the desktop app. It also defines the routes for the desktop platform
-│  ├─ views/ # The views each route will render in the desktop version of the app
-│  │  ├─ mod.rs # Defines the module for the views route and re-exports the components for each route
-│  │  ├─ blog.rs # The component that will render at the /blog/:id route
-│  │  ├─ home.rs # The component that will render at the / route
-├─ Cargo.toml # The desktop crate's Cargo.toml - This should include all desktop specific dependencies
-```
-
-When you start developing with the workspace setup each of the platform crates will look almost identical. The UI starts out exactly the same on all platforms. However, as you continue developing your application, this setup makes it easy to let the views for each platform change independently.
-
-## Shared UI crate
-
-The workspace contains a `ui` crate with components that are shared between multiple platforms. You should put any UI elements you want to use in multiple platforms in this crate. You can also put some shared client side logic in this crate, but be careful to not pull in platform specific dependencies. The `ui` crate starts out something like this:
-
-```
-ui/
-├─ src/
-│  ├─ lib.rs # The entrypoint for the ui crate
-│  ├─ hero.rs # The Hero component that will be used in every platform
-│  ├─ navbar.rs # The Navbar component that will be used in the layout of every platform's router
-```
-
-### Serving Your App
-
-Navigate to the platform crate of your choice:
-```bash
-cd web
-```
-
-and serve:
+## Building
+Produce optimized artifacts per target:
 
 ```bash
-dx serve
-```
+# web (wasm bundle)
+cd packages/web
+dx build --platform web --package web --release
 
+# desktop native binary
+cd packages/desktop
+dx build --platform desktop --package desktop --release
+```
+Mobile builds follow the same pattern but require the appropriate toolchain (Xcode, Android SDK) configured beforehand.
+
+## Testing
+Run Rust tests per crate or for the whole workspace:
+```bash
+cargo test --workspace
+cargo test -p ui            # target a specific crate
+```
+Place shared component tests inside `packages/ui/src` modules with `#[cfg(test)]` blocks; platform-specific integration tests belong in each crate’s `tests/` directory.
