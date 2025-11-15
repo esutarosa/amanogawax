@@ -1,0 +1,37 @@
+name-template: "v$RESOLVED_VERSION"
+tag-template: "v$RESOLVED_VERSION"
+categories:
+  - title: "### Added"
+    labels:
+      - feat
+      - feature
+      - enhancement
+  - title: "### Changed"
+    labels:
+      - chore
+      - refactor
+      - deps
+  - title: "### Fixed"
+    labels:
+      - bug
+      - fix
+      - hotfix
+change-template: "- $TITLE (#$NUMBER) @$AUTHOR"
+no-changes-template: "- Порожньо (див. ручні нотатки)."
+template: |
+  ## AmanogawaX v$RESOLVED_VERSION — Pride Release
+
+  ### Highlights
+  - _Перенесіть сюди основні причини для PROUD bump. Див. `RELEASE_TEMPLATE.md`.*
+
+  $CHANGES
+
+  ### Known Issues
+  - _Синхронізуйте з відкритими issue._
+
+  ### Checks
+  - [ ] `cargo fmt --all`
+  - [ ] `cargo clippy --all-targets --all-features`
+  - [ ] `cargo test --workspace`
+  - [ ] `dx serve` smoke (web/desktop)
+  - [ ] Артефакти (web bundle / desktop build / API image)

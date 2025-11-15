@@ -1,46 +1,33 @@
-## Project layout
-```
-.
-├─ Cargo.toml        # workspace manifest
-├─ packages/
-│  ├─ web/           # wasm target + static assets
-│  ├─ desktop/       # native desktop binary
-│  ├─ mobile/        # mobile entrypoint (simulator/devices)
-│  └─ ui/
-│     ├─ src/pages/        # page-level widgets (FSD)
-│     └─ src/shared/ui/    # primitive UI components (FSD)
-└─ target/           # cargo build artifacts
-```
-Each platform crate exposes `src/main.rs`, platform-specific `assets/`, and (when needed) platform-specific modules under `src/`. Shared UI follows a lightweight FSD split (`pages`, `shared/ui`) so that widgets can mature into `features/` or `entities/` later while staying platform agnostic.
+# AmanogawaX
 
-## Development commands
-Run these from the repo root:
+## Про що цей проєкт
 
-| Task | Command | Notes |
-| --- | --- | --- |
-| Web dev server | `cd packages/web && dx serve --platform web --package web` | Hot reloads + opens browser. |
-| Desktop dev | `cd packages/desktop && dx serve --platform desktop --package desktop` | Runs native window with live reload. |
-| Mobile dev (sim/device) | `cd packages/mobile && dx serve --platform mobile --package mobile` | Requires matching SDK/emulator. |
-| Workspace check | `cargo fmt --all && cargo clippy --all-targets --all-features` | Keep formatting and lints clean. |
+**AmanogawaX** — мультиплатформний клієнт для аніме з бекендом на Rust. Дані надходять із Telegram-бота і публікуються через API для вебу, десктопа та мобільних застосунків. Ми сфокусовані на сталому розвитку, тому відокремлюємо відкритий **некомерційний** доступ від комерційних угод.
 
-## Building
-Produce optimized artifacts per target:
+## Інструкції для клієнтів
 
-```bash
-# web (wasm bundle)
-cd packages/web
-dx build --platform web --package web --release
+1. **Ознайомлення з можливостями.** Перегляньте публічні демо та описи можливостей у беклозі (Issues). Якщо потрібен підготовлений демо-сервер або запис сесії, відкрийте Issue з тегом `demo-request`.
+2. **Узгодження функціонального обсягу.** Опишіть потрібні платформи (web/desktop/mobile), інтеграції та особливі вимоги (локалізація, CDN, авторизація). Це допоможе визначити ліцензійні умови.
+3. **Запит на комерційну ліцензію.** Створіть issue під назвою **"Commercial License Request"** або напишіть на контакт із `NOTICE`. Вкажіть організацію, контактну особу, очікувану модель розповсюдження та часові рамки.
+4. **Узгодження підтримки.** Разом затверджуємо пакет супроводу (оновлення, інтеграційні консультації, оновлення UI) і канали комунікації.
 
-# desktop native binary
-cd packages/desktop
-dx build --platform desktop --package desktop --release
-```
-Mobile builds follow the same pattern but require the appropriate toolchain (Xcode, Android SDK) configured beforehand.
+> Технічні інструкції для розробників перенесено в `TECHNICAL.md`.
 
-## Testing
-Run Rust tests per crate or for the whole workspace:
-```bash
-cargo test --workspace
-cargo test -p ui            # target a specific crate
-```
-Place shared component tests inside `packages/ui/src` modules with `#[cfg(test)]` blocks; platform-specific integration tests belong in each crate’s `tests/` directory.
+## Ліцензія
+
+- **Базова ліцензія:** [Prosperity Public License 3.0.0](./LICENSE) — безкоштовно для **некомерційного** використання та з 30-денним випробувальним періодом для комерційних сценаріїв.
+- **Виняток для Amanogawa:** офіційний проєкт Amanogawa може використовувати код за умовами [Apache License 2.0](./LICENSE-EXCEPTIONS.md).
+
+### Комерційне використання
+
+Якщо вам потрібне використання поза зазначеними рамками, зверніться по комерційну ліцензію:
+
+- Організація + контактна особа
+- Цільове використання та канали розповсюдження
+- Обсяг потрібних модулів і таймлайн
+
+Після погодження ви отримуєте індивідуальні умови з цінами та додатковими правами.
+
+### Атрибуція
+
+Під час розповсюдження зберігайте повідомлення про авторські права, текст ліцензії та маркуйте внесені зміни. Торговельні марки й назви лишаються власністю їхніх власників.
