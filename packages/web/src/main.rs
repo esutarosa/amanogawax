@@ -1,5 +1,5 @@
 use dioxus::prelude::*;
-use ui::HomePage;
+use ui::{GlobalStyles, HomePage};
 
 const FAVICON: Asset = asset!("/assets/favicon.ico");
 const MAIN_CSS: Asset = asset!("/assets/main.css");
@@ -14,6 +14,7 @@ fn App() -> Element {
         document::Link { rel: "icon", href: FAVICON }
         document::Link { rel: "stylesheet", href: MAIN_CSS }
 
+        GlobalStyles {}
         HomePage {}
     }
 }
