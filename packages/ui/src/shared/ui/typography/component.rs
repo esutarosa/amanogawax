@@ -3,6 +3,7 @@ use dioxus::prelude::*;
 use super::{classlist::typography_class, props::TypographyProps, styles, variants::TypographyTag};
 
 #[component]
+/// Typography primitive that maps tokens to CSS classes and semantic tags.
 pub fn Typography(props: TypographyProps) -> Element {
     let class = typography_class(&props);
     let TypographyProps { r#as, children, .. } = props;

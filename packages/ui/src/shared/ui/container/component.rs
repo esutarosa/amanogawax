@@ -5,6 +5,7 @@ use crate::shared::utils::classlist::merge_class;
 use super::{props::ContainerProps, styles, variants::ContainerTag};
 
 #[component]
+/// Semantic layout wrapper with consistent width constraints.
 pub fn Container(props: ContainerProps) -> Element {
     let ContainerProps {
         r#as,

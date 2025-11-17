@@ -1,3 +1,5 @@
+//! Typography primitive that maps tokens to CSS classes.
+
 mod classlist;
 mod component;
 mod props;

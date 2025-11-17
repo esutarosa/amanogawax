@@ -1,3 +1,5 @@
+//! Shared icon factory and prop definitions.
+
 mod factory;
 mod props;
 

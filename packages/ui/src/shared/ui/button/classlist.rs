@@ -1,5 +1,6 @@
 use super::variants::{ButtonSize, ButtonVariant};
 
+/// Compose CSS class string for a button instance.
 pub fn button_class(variant: ButtonVariant, size: ButtonSize, stretch: bool) -> String {
     let mut class = String::from("button");
 

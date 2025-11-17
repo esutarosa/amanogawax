@@ -1,3 +1,5 @@
+//! Common button primitive with variants, sizes, and slots.
+
 mod classlist;
 mod component;
 mod props;

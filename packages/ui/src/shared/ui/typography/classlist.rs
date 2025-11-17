@@ -1,5 +1,6 @@
 use super::props::TypographyProps;
 
+/// Build a CSS class string based on typography props.
 pub fn typography_class(props: &TypographyProps) -> String {
     let mut class = String::from("typo");
     push_class(&mut class, props.size.class_name());

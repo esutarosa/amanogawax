@@ -1,3 +1,5 @@
+//! Semantic layout wrapper with configurable tag.
+
 mod component;
 mod props;
 pub mod styles;

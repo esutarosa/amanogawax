@@ -1,4 +1,5 @@
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
+/// HTML tags the typography component can render.
 pub enum TypographyTag {
     P,
     Span,
@@ -12,6 +13,7 @@ pub enum TypographyTag {
 }
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
+/// Supported typography size tokens.
 pub enum TypographySize {
     Sm,
     Md,
@@ -24,6 +26,7 @@ pub enum TypographySize {
 }
 
 impl TypographySize {
+    /// Corresponding CSS class for the size token.
     pub fn class_name(&self) -> &'static str {
         match self {
             TypographySize::Sm => "typo-size-sm",
@@ -39,12 +42,14 @@ impl TypographySize {
 }
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
+/// Supported font-weight presets.
 pub enum TypographyWeight {
     Regular,
     Medium,
 }
 
 impl TypographyWeight {
+    /// Corresponding CSS class for the weight token.
     pub fn class_name(&self) -> &'static str {
         match self {
             TypographyWeight::Regular => "typo-weight-regular",
@@ -54,6 +59,7 @@ impl TypographyWeight {
 }
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
+/// Text alignment options.
 pub enum TypographyAlign {
     Left,
     Center,
@@ -62,6 +68,7 @@ pub enum TypographyAlign {
 }
 
 impl TypographyAlign {
+    /// Corresponding CSS class for the alignment.
     pub fn class_name(&self) -> &'static str {
         match self {
             TypographyAlign::Left => "typo-align-left",
@@ -73,6 +80,7 @@ impl TypographyAlign {
 }
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
+/// Text transform options.
 pub enum TypographyTransform {
     Uppercase,
     Lowercase,
@@ -80,6 +88,7 @@ pub enum TypographyTransform {
 }
 
 impl TypographyTransform {
+    /// Corresponding CSS class for the transform.
     pub fn class_name(&self) -> &'static str {
         match self {
             TypographyTransform::Uppercase => "typo-transform-uppercase",

@@ -1,3 +1,4 @@
+/// Append optional space-delimited class string to a base class.
 pub fn merge_class(base: &str, extra: Option<String>) -> String {
     match extra {
         Some(extra) => {

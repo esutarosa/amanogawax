@@ -5,6 +5,7 @@ use crate::shared::utils::classlist::merge_class;
 use super::{classlist::button_class, props::ButtonProps, styles};
 
 #[component]
+/// Pressable control with optional before/after slots and visual variants.
 pub fn Button(props: ButtonProps) -> Element {
     let ButtonProps {
         variant,

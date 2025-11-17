@@ -5,6 +5,7 @@ use crate::shared::utils::classlist::merge_class;
 use super::props::IconProps;
 
 #[derive(Clone, Copy)]
+/// Static icon metadata used by the icon helper.
 pub struct IconConfig {
     pub name: &'static str,
     pub view_box: &'static str,
@@ -12,6 +13,7 @@ pub struct IconConfig {
     pub height: u32,
 }
 
+/// Render an SVG icon with shared defaults and accessibility helpers.
 pub fn icon(config: IconConfig, props: IconProps, body: Element) -> Element {
     let IconProps {
         size,
