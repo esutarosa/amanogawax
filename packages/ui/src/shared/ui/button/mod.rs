@@ -1,16 +1,9 @@
-mod styles;
+mod classlist;
+mod component;
+mod props;
+pub mod styles;
+mod variants;
 
-use dioxus::prelude::*;
-
-#[derive(Clone, Props, PartialEq)]
-pub struct ButtonProps {
-    pub children: Element,
-}
-
-#[component]
-pub fn Button(ButtonProps { children }: ButtonProps) -> Element {
-    rsx! {
-        style { "{styles::button_css()}" }
-        button { class: "button", {children} }
-    }
-}
+pub use component::Button;
+pub use props::ButtonProps;
+pub use variants::{ButtonSize, ButtonVariant};
