@@ -5,7 +5,7 @@ pub mod shared;
 
 pub use pages::home::HomePage;
 
-pub use shared::icons::{IconLongArrowDown, Logo};
+pub use shared::icons::Logo;
 
 pub use shared::styles::GlobalStyles;
 
