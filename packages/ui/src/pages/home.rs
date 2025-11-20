@@ -1,36 +1,39 @@
 use dioxus::prelude::*;
 
-use crate::shared::ui::{
-    button::Button,
-    container::Container,
-    typography::{
-        Typography, TypographySize, TypographyTag, TypographyTransform, TypographyWeight,
+use crate::shared::{
+    ui::{
+        button::Button,
+        container::Container,
+        typography::{
+            Typography, TypographySize, TypographyTag, TypographyTransform, TypographyWeight,
+        },
     },
+    widgets::layout::Layout,
 };
 
 #[component]
 pub fn HomePage() -> Element {
     rsx! {
-        main {
-            class: "page",
+        Layout {
             Container {
+                class: "page",
                 div {
                     Typography {
                         r#as: TypographyTag::H1,
                         size: TypographySize::Xl5,
                         weight: TypographyWeight::Regular,
                         transform: TypographyTransform::Capitalize,
-                        "amanogawax"
+                        "AmanogawaX"
                     }
                 }
                 div {
                     Typography {
                         r#as: TypographyTag::P,
-                        "test"
+                        "UwU"
                     }
                     div {
                         Button {
-                            "button"
+                            "Click me"
                         }
                     }
                 }

@@ -15,4 +15,5 @@ pub use shared::ui::icon::IconProps;
 pub use shared::ui::section::Section;
 pub use shared::ui::typography::Typography;
 
-pub use shared::widgets::Navbar;
+pub use shared::widgets::layout::Layout;
+pub use shared::widgets::navbar::Navbar;
