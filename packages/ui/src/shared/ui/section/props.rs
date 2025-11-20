@@ -8,6 +8,9 @@ pub struct SectionProps {
     #[props(default = SectionTag::Section)]
     /// Semantic tag to render (defaults to `section`).
     pub r#as: SectionTag,
+    #[props(default = false)]
+    /// Remove default section spacing when `true`.
+    pub flush: bool,
     #[props(optional)]
     /// Extra CSS classes applied alongside the base section styles.
     pub class: Option<String>,

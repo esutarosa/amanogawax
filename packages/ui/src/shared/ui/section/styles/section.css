@@ -1,0 +1,7 @@
+.section {
+  margin-block: var(--space-128);
+}
+
+.section--flush {
+  margin-block: 0;
+}

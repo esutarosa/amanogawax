@@ -2,6 +2,7 @@
 
 mod component;
 mod props;
+pub mod styles;
 mod variants;
 
 pub use component::Section;
