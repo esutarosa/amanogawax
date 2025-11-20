@@ -10,31 +10,31 @@
 }
 
 .typo-size-md {
-  font-size: clamp(1.0000rem, 0.129vw + 0.9697rem, 1.1250rem);
+  font-size: clamp(1.0000rem, calc(0.0114vw + 0.9608rem), 1.1250rem);
 }
 
 .typo-size-lg {
-  font-size: clamp(1.1250rem, 0.259vw + 1.0643rem, 1.3750rem);
+  font-size: clamp(1.1250rem, calc(0.0228vw + 1.0465rem), 1.3750rem);
 }
 
 .typo-size-xl {
-  font-size: clamp(1.2500rem, 0.518vw + 1.1286rem, 1.7500rem);
+  font-size: clamp(1.2500rem, calc(0.0456vw + 1.0931rem), 1.7500rem);
 }
 
 .typo-size-2xl {
-  font-size: clamp(1.3750rem, 0.906vw + 1.1626rem, 2.2500rem);
+  font-size: clamp(1.3750rem, calc(0.0798vw + 1.1004rem), 2.2500rem);
 }
 
 .typo-size-3xl {
-  font-size: clamp(1.5000rem, 1.294vw + 1.1966rem, 2.7500rem);
+  font-size: clamp(1.5000rem, calc(0.1141vw + 1.1077rem), 2.7500rem);
 }
 
 .typo-size-4xl {
-  font-size: clamp(1.7500rem, 1.812vw + 1.3252rem, 3.5000rem);
+  font-size: clamp(1.7500rem, calc(0.1597vw + 1.2007rem), 3.5000rem);
 }
 
 .typo-size-5xl {
-  font-size: clamp(2.0000rem, 2.330vw + 1.4539rem, 4.2500rem);
+  font-size: clamp(2.0000rem, calc(0.2053vw + 1.2938rem), 4.2500rem);
 }
 
 .typo-weight-regular {
