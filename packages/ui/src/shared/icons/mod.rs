@@ -5,6 +5,7 @@ mod bookmark;
 mod logo;
 mod play;
 mod telegram;
+mod youtube;
 
 pub use alt_arrow_right::AltArrowRight;
 pub use logo::Logo;
