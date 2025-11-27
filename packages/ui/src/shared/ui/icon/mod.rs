@@ -3,5 +3,5 @@
 mod factory;
 mod props;
 
-pub use factory::{icon, IconConfig};
+pub use factory::{IconConfig, icon};
 pub use props::IconProps;

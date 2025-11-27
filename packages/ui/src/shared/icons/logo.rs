@@ -1,6 +1,6 @@
 use dioxus::prelude::*;
 
-use crate::shared::ui::icon::{icon, IconConfig, IconProps};
+use crate::shared::ui::icon::{IconConfig, IconProps, icon};
 
 #[component]
 pub fn Logo(props: IconProps) -> Element {
