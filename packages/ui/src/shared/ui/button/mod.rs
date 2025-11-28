@@ -8,4 +8,4 @@ mod variants;
 
 pub use component::Button;
 pub use props::ButtonProps;
-pub use variants::{ButtonSize, ButtonVariant};
+pub use variants::{AdornmentKind, ButtonSize, ButtonVariant};

@@ -1,11 +1,43 @@
+:root {
+  --button-height-base: clamp(3.5000rem, calc(0.0470vw + 3.3233rem), 4.0000rem);
+  --button-pad-inline-base: clamp(1.2500rem, calc(0.0235vw + 1.1617rem), 1.5000rem);
+  --button-gap-base: clamp(0.5000rem, calc(0.0117vw + 0.4558rem), 0.6250rem);
+  --button-pill-pad-base: clamp(1.2500rem, calc(0.0235vw + 1.1617rem), 1.5000rem);
+  --button-pill-icon-base: 1.5rem;
+  --button-edge-pill-base: clamp(0.3750rem, calc(0.0117vw + 0.3308rem), 0.5000rem);
+}
+
 .button {
+  --button-height: var(--button-height-base);
+  --pad-inline: var(--button-pad-inline-base);
+  --content-gap: var(--button-gap-base);
+  --pill-pad-x: var(--button-pill-pad-base);
+  --pill-icon: var(--button-pill-icon-base);
+  --edge-pill: var(--button-edge-pill-base);
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: var(--content-gap);
+  height: var(--button-height);
+  border-radius: 999px;
+  padding-inline: var(--pad-inline);
+  align-self: flex-start;
+  transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease,
+    transform 150ms ease;
 }
 
 .button--stretch {
   width: 100%;
+  align-self: stretch;
+}
+
+.button--pill-before {
+  padding-inline-start: var(--edge-pill);
+}
+
+.button--pill-after {
+  padding-inline-end: var(--edge-pill);
 }
 
 .button__before,
@@ -13,16 +45,127 @@
 .button__content {
   display: inline-flex;
   align-items: center;
+  flex-shrink: 0;
 }
 
-.button--default {}
+.button__before svg,
+.button__after svg,
+.button__content svg {
+  flex-shrink: 0;
+}
 
-.button--secondary {}
+.button--primary {
+  background-color: var(--primary);
+  color: var(--foreground);
+}
 
-.button--outline {}
+.button--primary .button__content svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
 
-.button--accent {}
+.button--primary .button__adornment--pill {
+  background-color: var(--primary-accent);
+}
 
-.button--size-default {}
+.button--primary:hover {
+  background-color: color-mix(in srgb, var(--primary) 80%, #000 20%);
+}
 
-.button--size-icon {}
+.button--secondary {
+  background-color: var(--secondary);
+  color: var(--foreground);
+}
+
+.button--secondary .button__adornment--pill {
+  background-color: var(--secondary-foreground);
+}
+
+.button--secondary:hover {
+  background-color: color-mix(in srgb, var(--secondary) 80%, #000 20%);
+}
+
+.button--outline {
+  background: transparent;
+  color: var(--muted-foreground);
+  border: 1px solid var(--muted);
+}
+
+.button--outline .button__adornment--pill {
+  background-color: var(--muted-accent);
+}
+
+.button--outline:hover {
+  color: var(--foreground);
+  border-color: var(--primary-accent);
+}
+
+.button--outline:hover .button__adornment--pill {
+  background-color: var(--primary-accent);
+}
+
+.button--alternative {
+  background-color: var(--secondary-foreground);
+  color: var(--foreground);
+}
+
+.button--alternative .button__adornment--pill {
+  background-color: color-mix(in srgb, var(--secondary-foreground) 70%, #000 30%);
+}
+
+.button--alternative:hover {
+  background-color: color-mix(in srgb, var(--secondary-foreground) 80%, #000 20%);
+}
+
+.button--size-icon {
+  --button-height: clamp(3.0000rem, calc(0.0470vw + 2.8233rem), 3.5000rem);
+  min-height: clamp(3.0000rem, calc(0.0470vw + 2.8233rem), 3.5000rem);
+  min-width: clamp(3.0000rem, calc(0.0470vw + 2.8233rem), 3.5000rem);
+  padding: clamp(0.6500rem, calc(0.0235vw + 0.5620rem), 0.9000rem);
+  border-radius: 999px;
+  gap: 0;
+}
+
+.button__adornment--pill {
+  padding-inline: var(--pill-pad-x);
+  border-radius: 999px;
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(var(--button-height) - 2 * var(--edge-pill));
+  margin-block: 0;
+}
+
+.button__adornment--pill svg {
+  display: block;
+  width: var(--pill-icon);
+  height: var(--pill-icon);
+}
+
+.button--size-sm {
+  --button-height: clamp(2.7500rem, calc(1.1278vw + 2.4849rem), 3.5000rem);
+  --pad-inline: clamp(1.0000rem, calc(0.0235vw + 0.9116rem), 1.2500rem);
+  --content-gap: clamp(0.3750rem, calc(0.0117vw + 0.3308rem), 0.5000rem);
+  --pill-pad-x: clamp(1.0000rem, calc(0.0235vw + 0.9116rem), 1.2500rem);
+  --pill-icon: 1.25rem;
+  --edge-pill: clamp(0.2500rem, calc(0.0117vw + 0.2058rem), 0.3750rem);
+}
+
+.button--size-xs {
+  --button-height: clamp(2.0000rem, calc(1.1278vw + 1.7350rem), 2.7500rem);
+  --pad-inline: clamp(0.7500rem, calc(0.0235vw + 0.6617rem), 1.0000rem);
+  --content-gap: clamp(0.2500rem, calc(0.0117vw + 0.2058rem), 0.3750rem);
+  --pill-pad-x: clamp(0.7500rem, calc(0.0235vw + 0.6617rem), 1.0000rem);
+  --pill-icon: 0.75rem;
+  --edge-pill: clamp(0.1875rem, calc(0.0059vw + 0.1653rem), 0.2500rem);
+}
+
+.button--size-md {
+  --button-height: var(--button-height-base);
+  --pad-inline: var(--button-pad-inline-base);
+  --content-gap: var(--button-gap-base);
+  --pill-pad-x: var(--button-pill-pad-base);
+  --pill-icon: var(--button-pill-icon-base);
+  --edge-pill: var(--button-edge-pill-base);
+}

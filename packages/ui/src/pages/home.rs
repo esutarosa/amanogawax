@@ -1,12 +1,10 @@
 use dioxus::prelude::*;
 
 use crate::shared::{
+    icons::Play,
     ui::{
-        button::Button,
+        button::{AdornmentKind, Button},
         container::Container,
-        typography::{
-            Typography, TypographySize, TypographyTag, TypographyTransform, TypographyWeight,
-        },
     },
     widgets::layout::Layout,
 };
@@ -15,25 +13,29 @@ use crate::shared::{
 pub fn HomePage() -> Element {
     rsx! {
         Layout {
-            Container {
-                class: "page",
-                div {
-                    Typography {
-                        r#as: TypographyTag::H1,
-                        size: TypographySize::Xl5,
-                        weight: TypographyWeight::Regular,
-                        transform: TypographyTransform::Capitalize,
-                        "AmanogawaX"
-                    }
-                }
-                div {
-                    Typography {
-                        r#as: TypographyTag::P,
-                        "UwU"
-                    }
-                    div {
+            section { class: "hero",
+                Container {
+                    class: "page",
+                    style { "
+                        .hero {{
+                            padding-block: var(--space-64);
+                        }}
+
+                        .hero .container {{
+                            padding: var(--space-32);
+                        }}
+
+                        .button-demo__group {{
+                            display: flex;
+                            flex-direction: column;
+                            gap: var(--space-16);
+                        }}
+                    " }
+                    div { class: "button-demo__group",
                         Button {
-                            "Click me"
+                            after: rsx!(Play {}),
+                            after_kind: AdornmentKind::Pill,
+                            "Дивитися"
                         }
                     }
                 }
